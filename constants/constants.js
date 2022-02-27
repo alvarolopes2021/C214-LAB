@@ -12,5 +12,12 @@ module.exports.constants = constants = {
     },
     ERRORS: {
         INVALID_OPTION: "Invalid option"
+    },
+    OPS_TRANSLATED: {
+        ADDING: "adding",
+        SUBTRACTING: "subtracting",
+        MULTIPLYING: "multiplying",
+        DIVIDING: "dividing",
+        POTENTIATING: "potentiating"
     }
 }

@@ -1,67 +1,81 @@
+const handleInsertion = require("./handleInsertion");
 const constants = require('./../constants/constants');
-const input = require('./../utils/userInput');  // gets any user input
+
+var numbersToOperate = [];
 
 async function add() {
 
-    let eql = constants.constants.OPS.NO;
-    let numbersToSum = [];
-
-    console.log("Type '" + constants.constants.OPS.EQL + "' when you are done adding numbers");
-
-    while (eql == constants.constants.OPS.NO) {
-
-        let num = 0;
-        let userInput;
-
-        do {
-            console.log('Type a number: ');
-
-            userInput = await input.getUserInput();
-
-            if(userInput.input == constants.constants.OPS.EQL)
-                break;
-
-            num = Number.parseFloat(userInput.input.trim());
-
-            if (isNaN(num)) {
-                console.log(userInput.input + ' is not a number');
-                num = null;
-            }
-            else if (num.toString().length <= 0)
-                console.log('Please, type a number');
-
-        } while (num == null || num.toString().length <= 0);
-
-        numbersToSum.push(num);      
-
-        eql = userInput.input;
-
-        if (eql != constants.constants.OPS.EQL)
-            eql = constants.constants.OPS.NO;
-    }
+    numbersToOperate = await handleInsertion.handleInsertion(constants.constants.OPS_TRANSLATED.ADDING);
 
     let result = 0;
-    numbersToSum.forEach((value) => {
+    numbersToOperate.forEach((value) => {
         result += value;
     })
 
-    console.log(result);
+    console.log(result + " \n ");
 }
 
 async function sub() {
+
+    numbersToOperate = await handleInsertion.handleInsertion(constants.constants.OPS_TRANSLATED.SUBTRACTING);
+
+    let result = 0;
+    numbersToOperate.forEach((value) => {
+        result = -value - result;
+    })
+
+    console.log(result + " \n ");
 
 }
 
 async function mul() {
 
+    numbersToOperate = await handleInsertion.handleInsertion(constants.constants.OPS_TRANSLATED.MULTIPLYING);
+
+    let result = 1;
+    numbersToOperate.forEach((value) => {
+        result = result * value;
+    })
+
+    console.log(result + " \n ");
+
 }
 
 async function div() {
 
+    numbersToOperate = await handleInsertion.handleInsertion(constants.constants.OPS_TRANSLATED.DIVIDING);
+
+    let result = 1;
+    let i = 0;
+    numbersToOperate.forEach((value) => {
+        if (i == 0) {
+            result = value;
+            i = i + 1;
+        }
+        else {
+            result /= value;
+        }
+
+    });
+    console.log(result + " \n ");
 }
 
 async function pow() {
+    numbersToOperate = await handleInsertion.handleInsertion(constants.constants.OPS_TRANSLATED.POTENTIATE);
 
+    let result = 0;
+    
+    numbersToOperate.forEach((value) => {
+        if (i == 0) {
+            result = value;
+            i = i + 1;
+        }
+        else {
+            result /= value;
+        }
+
+    });
+    console.log(result + " \n ");
 }
 
 module.exports.operations = {

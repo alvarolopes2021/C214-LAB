@@ -4,7 +4,7 @@ const constants = require('./constants/constants');  // system constants
 const services = require('./services/doMath');  // do the math
 
 
-async function doMath() {
+async function start() {
     let keepAlive = true;
 
     while (keepAlive) {
@@ -38,4 +38,4 @@ async function doMath() {
     }
 }
 
-doMath();
+start();
