@@ -61,19 +61,18 @@ async function div() {
 }
 
 async function pow() {
-    numbersToOperate = await handleInsertion.handleInsertion(constants.constants.OPS_TRANSLATED.POTENTIATE);
+    numbersToOperate = await handleInsertion.handleInsertion(constants.constants.OPS_TRANSLATED.POTENTIATING);
 
-    let result = 0;
-    
+    let result = 1;
+    let i = 0;
     numbersToOperate.forEach((value) => {
         if (i == 0) {
             result = value;
             i = i + 1;
         }
         else {
-            result /= value;
+            result = Math.pow(result, value);
         }
-
     });
     console.log(result + " \n ");
 }
